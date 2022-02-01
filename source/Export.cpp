@@ -58,12 +58,12 @@ EXPORT bool LoadXML(char* XMLPath, char* BMGName, char* TBLName, bool LittleEndi
     return writer.writeBmg(LittleEndian);
 }
 
-extern "C" bool BMGToXML(char* BMGPath, char* TBLPath) {
-    BMGINFO info = BMGINFO(LoadBMG(BMGPath), LoadBCSV(TBLPath));
+extern "C" bool BMGToXML(char* bmgpath, char* tblpath) {
+    BMGINFO info = BMGINFO(LoadBMG(bmgpath), LoadBCSV(tblpath));
     return BMGINFO::Write(info, "Message.xml");
 }
 
-extern "C" bool XMLToBMG(char* XMLPath, bool LittleEndian) {
-    auto writer = BmgWriter(XMLPath, "Message.bmg", "MessageId.tbl");
-    return writer.writeBmg(LittleEndian);
+extern "C" bool XMLToBMG(char* xmlpath, bool littleendian) {
+    auto writer = BmgWriter(xmlpath, "Message.bmg", "MessageId.tbl");
+    return writer.writeBmg(littleendian);
 }
