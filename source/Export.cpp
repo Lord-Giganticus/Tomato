@@ -37,33 +37,20 @@ BMGINFO::BMGINFO(BmgFileHolder* bmg, BCSV* tbl) {
     TBLFields = tbl->mFields;
 }
 
-EXPORT BMGINFO LoadBMGInfo(char* BMGPath, char* TBLPath) {
-    return BMGINFO(LoadBMG(BMGPath), LoadBCSV(TBLPath));
-}
-
-bool BMGINFO::Write(BMGINFO& info, char* XMLName) {
+bool BMGINFO::Write(char* XMLName) {
     const char* name = "Message.xml";
     if (XMLName != nullptr)
         name = XMLName;
-    XmlWriter writer = XmlWriter(name, info.BMG, info.TBL);
+    XmlWriter writer = XmlWriter(name, BMG, TBL);
     return writer.writeXml();
 }
 
-EXPORT bool ToXML(BMGINFO info, char* XMLName) {
-    return BMGINFO::Write(info, XMLName);
-}
-
-EXPORT bool LoadXML(char* XMLPath, char* BMGName, char* TBLName, bool LittleEndian) {
-    auto writer = BmgWriter(XMLPath, BMGName, TBLName);
-    return writer.writeBmg(LittleEndian);
-}
-
-extern "C" bool BMGToXML(char* bmgpath, char* tblpath) {
+bool BMGToXML(char* bmgpath, char* tblpath) {
     BMGINFO info = BMGINFO(LoadBMG(bmgpath), LoadBCSV(tblpath));
-    return BMGINFO::Write(info, "Message.xml");
+    return info.Write("Message.xml");
 }
 
-extern "C" bool XMLToBMG(char* xmlpath, bool littleendian) {
+bool XMLToBMG(char* xmlpath, bool littleendian) {
     auto writer = BmgWriter(xmlpath, "Message.bmg", "MessageId.tbl");
     return writer.writeBmg(littleendian);
 }
