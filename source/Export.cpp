@@ -1,4 +1,4 @@
-#include "Export.h"
+#include "../include/Export.h"
 #define arrsize(arr) sizeof(arr)/sizeof(arr[0])
 
 using namespace std;
@@ -16,15 +16,6 @@ BCSV* LoadBCSV(char* path) {
 unsigned long GetFeildCount(BCSV* ptr) {
     auto fields = ptr->mFields;
     return arrsize(fields);
-}
-
-list(Field) GetFeilds(BCSV* ptr) {
-    list(Field) res;
-    auto size = GetFeildCount(ptr);
-    for (unsigned long i = 0; i < size; i++) {
-        res.push_back(ptr->mFields[i]);
-    }
-    return res;
 }
 
 BMGINFO::BMGINFO(BmgFileHolder* bmg, BCSV* tbl) {

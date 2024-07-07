@@ -1,4 +1,4 @@
-#include "XML.h"
+#include "../include/XML.h"
 #include <iostream>
 #include <cstring>
 

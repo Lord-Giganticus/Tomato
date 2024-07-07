@@ -26,8 +26,6 @@ BmgFileHolder* LoadBMG(char* path);
 
 BCSV* LoadBCSV(char* path);
 
-list(Field) LoadFields(BCSV* ptr);
-
 extern "C" {
     bool BMGToXML(char* bmgpath, char* tblpath);
     bool XMLToBMG(char* xmlpath, bool littleendian);

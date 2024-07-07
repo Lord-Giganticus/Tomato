@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cstring>
-#include "MESGbmg1.h"
+#include "../include/MESGbmg1.h"
 
 namespace MESGbmg1 {
 

@@ -1,7 +1,7 @@
 #include <fstream>
 #include <iostream>
 #include <cstring>
-#include "Bcsv.h"
+#include "../include/Bcsv.h"
 
 #define BCSV_MAX_ALOC_SIZE 0x80000
 
